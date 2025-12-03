@@ -1,5 +1,10 @@
 ;;;; ================================================================
-;;;; CMPS 3500 – lab07.lisp
+;;;; COURSE: CMPS 3500 – lab07.lisp
+;;;; Activity 7
+;;;; DATE: 11/30/2025
+;;;; USER: MGONZALEZ207
+;;;; NAME: Moises Gonzalez
+;;;; DESC: LISP Menu With Functions
 ;;;; ================================================================
 
 (in-package :cl-user)
@@ -43,12 +48,12 @@
     (let ((words (loop for line = (read-line in nil)
                        while line
                        append (remove-if #'string= '() (mapcar #'string-downcase (split-sequence #\Space line))))))
-      ;; Remove duplicates
+      ;; Removes duplicates
       (let ((unique-list nil))
         (dolist (w words)
           (unless (member w unique-list :test #'string=)
             (push w unique-list)))
-        ;; Write to outfile
+        ;; Writes to outfile
         (with-open-file (out outfile :direction :output :if-exists :supersede)
           (dolist (w (nreverse unique-list))
             (format out "~a~%" w)))))))
